@@ -1,0 +1,14 @@
+# Login (sin Header)
+mutation { login(input:{email:"ana@empresa.test",password:"secreto"}) { token tokenType user { name email } } }
+
+# Variables: {"accountId":"1","from":"2026-10-26","to":"2026-10-30"}
+query BalanceDeUnaCuenta($accountId: ID!, $from: Date!, $to: Date!) {
+ accountBalance(accountId:$accountId,fromDate:$from,toDate:$to) { accountId accountName isActive openingBalance totalIncome totalExpense profit closingBalance isInRed }
+}
+
+# Variables: {"from":"2026-10-26","to":"2026-10-30"}
+query BalanceDeLaEmpresa($from: Date!, $to: Date!) {
+ generalBalance(fromDate:$from,toDate:$to) { companyId currency fromDate toDate openingBalance totalIncome totalExpense profit closingBalance isInRed accountsInRed accounts { accountId accountName isActive openingBalance totalIncome totalExpense profit closingBalance isInRed } }
+}
+
+# Banco solo el 28: variables {"accountId":"1","from":"2026-10-28","to":"2026-10-28"}
